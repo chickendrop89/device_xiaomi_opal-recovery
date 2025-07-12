@@ -1,0 +1,21 @@
+# Microtrust TEE
+ro.vendor.mtk_tee_gp_support=1
+ro.vendor.mtk_microtrust_tee_support=1
+
+# Keymaster / Gatekeeper
+ro.hardware.gatekeeper=beanpod
+ro.hardware.kmsetkey=beanpod
+
+# /data Encryption
+ro.crypto.volume.filenames_mode=aes-256-cts
+fbe.metadata.wrappedkey=true
+
+# Dynamic Partitions
+ro.boot.dynamic_partitions=true
+
+# Charger suspend 
+ro.charger.enable_suspend=1
+
+# ADB
+ro.adb.secure=0
+ro.debuggable=1
