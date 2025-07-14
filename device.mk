@@ -134,10 +134,9 @@ TW_EXCLUDE_APEX         := true
 TW_INCLUDE_FASTBOOTD    := true
 TW_INCLUDE_PYTHON       := true
 TW_NO_SCREEN_BLANK      := true # Dim the display instead of turning off
-TW_NO_FASTBOOT_BOOT     := true # "fastboot boot xxx" bricks device
+TW_NO_FASTBOOT_BOOT     := true # Hotbooting images doesn't work
 TW_USES_VENDOR_LIBS     := true # Stop vendor prebuilts from being overwritten
-TW_EXCLUDE_TWRPAPP      := true # This isn't official build. Don't include the app
-#TW_FRAMERATE           := 60  # Causes underflow errors!
+TW_FRAMERATE            := 60
 
 # TWRP - Logging
 TWRP_INCLUDE_LOGCAT     := true
