@@ -184,7 +184,7 @@ on property:vold.decrypt=trigger_restart_framework
     restorecon_recursive /data/vendor/thh
     write /proc/bootprof "start teei cfg end (on trigger_restart_framework)"
 
-on late-fs
+on post-fs
     # Set /mnt/vendor/persist/rpmb
     chown system system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist

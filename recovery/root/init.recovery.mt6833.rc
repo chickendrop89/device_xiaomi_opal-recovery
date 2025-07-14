@@ -1,6 +1,7 @@
 import /init.microtrust.rc
 
 on early-init
+    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
 
 on init

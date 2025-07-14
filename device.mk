@@ -45,10 +45,6 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
 
-# Contains necessary LKMs and firmware
-PRODUCT_PACKAGES += \
-    vendor_blobs
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
 	$(LOCAL_PATH)/
@@ -63,7 +59,6 @@ TARGET_SCREEN_DENSITY := 399
 TARGET_SCREEN_WIDTH   := 1080
 
 # API
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
 PRODUCT_SHIPPING_API_LEVEL  := 30
 PRODUCT_TARGET_VNDK_VERSION := 31
 
@@ -90,11 +85,15 @@ AB_OTA_PARTITIONS += \
     sspm \
     system \
     system_ext \
+    system_dlkm \
     tee \
     vbmeta \
+    odm \
+    odm_dlkm \
     vbmeta_system \
     vbmeta_vendor \
-    vendor
+    vendor \
+    vendor_dlkm
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -134,10 +133,9 @@ TW_EXCLUDE_APEX         := true
 TW_INCLUDE_FASTBOOTD    := true
 TW_INCLUDE_PYTHON       := true
 TW_NO_SCREEN_BLANK      := true # Dim the display instead of turning off
-TW_NO_FASTBOOT_BOOT     := true # "fastboot boot xxx" bricks device
-TW_USES_VENDOR_LIBS     := true # Stop vendor prebuilts from being overwritten
-TW_EXCLUDE_TWRPAPP      := true # This isn't official build. Don't include the app
-#TW_FRAMERATE           := 60  # Causes underflow errors!
+TW_NO_FASTBOOT_BOOT     := true # Hotbooting images doesn't work
+TW_EXCLUDE_TWRPAPP      := true
+TW_FRAMERATE            := 60
 
 # TWRP - Logging
 TWRP_INCLUDE_LOGCAT     := true

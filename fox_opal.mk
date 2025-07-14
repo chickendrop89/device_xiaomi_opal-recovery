@@ -25,10 +25,11 @@ OF_CLOCK_POS := 1 # Left & Right
 OF_OPTIONS_LIST_NUM := 6
 
 # Custom ROMs / Misc
+OF_DEFAULT_KEYMASTER_VERSION := 4.1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 OF_ENABLE_ALL_PARTITION_TOOLS := 1
 
-# Use LZ4 instead of GZIP for faster boot
+# Kernel supports LZ4. Use it instead of GZIP for faster boot
 OF_USE_LZ4_COMPRESSION := 1
 
 # Fixes certain storage issues
@@ -38,11 +39,9 @@ OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
 # On MTK devices, fuel gauge doesn't work without this
 OF_USE_LEGACY_BATTERY_SERVICES := 1
 
+# Hack to get flashlight working
+OF_FL_PATH1 := /system/etc/flashlight
+
 # Doesn't work on our device
 OF_NO_SPLASH_CHANGE := 1
-OF_FLASHLIGHT_ENABLE := 0
 OF_USE_GREEN_LED := 0
-
-# Failsafes
-OF_DEFAULT_KEYMASTER_VERSION := 4.1
-OF_FORCE_CASEFOLDING := 1
