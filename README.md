@@ -3,7 +3,7 @@
 Device tree for this Xiaomi device
 - Xiaomi Redmi Note _11S_ 5G (codenamed `opal`) (March 2022)
 
-This branch is only for devices running HyperOS 1.0.4.0 or above (GKI 2.0)
+This branch is only for devices running AOSP, or HyperOS 1.0.1.0 and lower (4.14 kernel)
 
 ## Device specifications
 
