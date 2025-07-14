@@ -16,19 +16,19 @@
 LOCAL_PATH := device/xiaomi/opal
 PREBUILT_PATH := $(LOCAL_PATH)/prebuilt
 
-# Configure Virtual A/B with compression
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+# Configure Virtual A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Enable developer GSI keys
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# Install developer gsi keys into the ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
-# Configure emulated_storage.mk
+# Project ID Quota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# devices
+# OTA device codename
 TARGET_OTA_ASSERT_DEVICE := opal
 
 # Boot control HAL | Preloader utils
@@ -57,7 +57,7 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION  := false
 
-# Resolution
+# Display size & density
 TARGET_SCREEN_HEIGHT  := 2400
 TARGET_SCREEN_DENSITY := 399
 TARGET_SCREEN_WIDTH   := 1080
@@ -143,25 +143,6 @@ TW_EXCLUDE_TWRPAPP      := true # This isn't official build. Don't include the a
 TWRP_INCLUDE_LOGCAT     := true
 TARGET_USES_LOGD        := true
 
-# Ignore this input to prevent power button issues
-TW_INPUT_BLACKLIST := "uinput-goodix" 
-
-# USB configuration
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := \
-    /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-
-# Display brightness
-TW_DEFAULT_BRIGHTNESS := 1200
-TW_MAX_BRIGHTNESS     := 2047
-TW_BRIGHTNESS_PATH    := \
-    "/sys/class/leds/lcd-backlight/brightness"
-
-# Haptics
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := \
-    "IVibrator/vibratorfeature"
-
 # TWRP - Crypto
 TW_INCLUDE_CRYPTO     := true
 TW_INCLUDE_CRYPTO_FBE := true
@@ -183,6 +164,25 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+# TWRP - Haptics
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := \
+    "IVibrator/vibratorfeature"
+
+# TWRP - Brightness
+TW_DEFAULT_BRIGHTNESS := 1200
+TW_MAX_BRIGHTNESS     := 2047
+TW_BRIGHTNESS_PATH    := \
+    "/sys/class/leds/lcd-backlight/brightness"
+
+# TWRP - USB configuration
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := \
+    /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+
+# Ignore this input to prevent power button issues
+TW_INPUT_BLACKLIST := "uinput-goodix" 
 
 # Xiaomi OTACert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
