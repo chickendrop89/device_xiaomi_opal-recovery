@@ -29,7 +29,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # OTA device codename
-TARGET_OTA_ASSERT_DEVICE := opal
+TARGET_OTA_ASSERT_DEVICE := opal,everpal
 
 # Boot control HAL | Preloader utils
 PRODUCT_PACKAGES += \
