@@ -61,6 +61,14 @@ subsystem dma_heap
 /sys/bus/iio/devices/iio:device* scan_elements/in_proximity_en  0600 system system
 /sys/bus/iio/devices/iio:device* scan_elements/in_timestamp_en  0600 system system
 
+# Haptics
+/sys/bus/i2c/drivers/awinic_haptic/1-005a/f0_save     0644 system system
+/sys/bus/i2c/drivers/awinic_haptic/1-005a/osc_save    0644 system system
+/sys/bus/i2c/drivers/awinic_haptic/1-005a/custom_wave 0666 system system
+/sys/bus/i2c/drivers/awinic_haptic/9-005a/f0_save     0644 system system
+/sys/bus/i2c/drivers/awinic_haptic/9-005a/osc_save    0644 system system
+/sys/bus/i2c/drivers/awinic_haptic/9-005a/custom_wave 0666 system system
+
 # these should not be world writable
 /dev/uhid                 0660   uhid       uhid
 /dev/uinput               0660   uhid       uhid
